@@ -1,8 +1,10 @@
 class CustomersController < ApplicationController
 
   def show
+    # @user = User.find(params[:id])
+
     @users = User.all
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]
   end
 
   def edit
@@ -10,21 +12,24 @@ class CustomersController < ApplicationController
   end
 
   def update
-     user = User.find(params[:id])
-     user.update(user_params)
-     redirect_to customer_path(user.id)
+     @user = User.find(params[:id])
+    if @user.save(user_params)
+      redirect_to customer_path, notice: ''
+    else
+      render 'edit'
+    end
   end
 
-   def destroy
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
     flash[:success] = 'ユーザーを削除しました。'
-    redirect_to :top
+    redirect_to root
   end
 
  private
     def user_params
-       params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, )
+       params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
     end
 
 end
