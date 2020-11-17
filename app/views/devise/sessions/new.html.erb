@@ -1,4 +1,6 @@
-<p>会員の方はこちらからログイン</p>
+<div class="row">
+  <div class="col-xs-3">
+<h5><span style="background-color: #ffd700">会員の方はこちらからログイン</span></h5>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -7,7 +9,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :パスワード　　 %>
+    <%= f.label :パスワード　　　%>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -16,10 +18,12 @@
   <%= link_to "=> パスワードを忘れた方はこちら", new_password_path(resource_name) %><br />
 <% end %>
     <%= f.submit "Log in" %>
-  </div>
+  </div><br>
 <% end %>
-<p>登録がお済みでない方</p>
+<h5><span style="background-color: #ffd700">登録がお済みでない方</span></h5>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。
 <% end %>
+  </div>
+</div>
 
