@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.col-xs-9 {
+	margin-top:81px;
+}
+
+.product1 {
+	margin-top:81px;
+}
+
+.col-xs-3 {
+	margin-top:81px;
+}
+
+.row1 {
+  margin-top:81px;
+  position:center;
+}
