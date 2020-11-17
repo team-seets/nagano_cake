@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_16_094619) do
+=======
+ActiveRecord::Schema.define(version: 2020_11_16_023402) do
+>>>>>>> 83cbdd3c9a5a8581ca6251a212685d97e80e2807
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_094619) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+<<<<<<< HEAD
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -25,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_094619) do
     t.string "address"
     t.string "postal_code"
     t.string "telephone_number"
+=======
+>>>>>>> 83cbdd3c9a5a8581ca6251a212685d97e80e2807
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
