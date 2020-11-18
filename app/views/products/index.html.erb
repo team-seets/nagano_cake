@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xs-3">
+
     <h3>ジャンル検索</h3>
     <%= link_to 'ケーキ1' %>
     <br>
@@ -8,6 +9,15 @@
     <%= link_to 'プリン' %>
     <br>
     <%= link_to 'キャンディー' %>
+
+    <ul class="list-group">
+      <li class="list-group-item"><h3>ジャンル検索</h3></li>
+	    <li class="list-group-item"><%= link_to 'ケーキ' %></li>
+	    <li class="list-group-item"><%= link_to '焼き菓子' %></li>
+	    <li class="list-group-item"><%= link_to 'プリン' %></li>
+	    <li class="list-group-item"><%= link_to 'キャンディ' %></li>
+    </ul>
+
   </div>
   <div class="col-xs-9">
     <h1>商品一覧(全何件)</h1>
@@ -17,7 +27,7 @@
           <tr>
             
             <br>
-            <td><%= link_to 'ケーキ',product_path(@product)%></td>
+            <td><%= link_to 'ケーキ',product_path(@product) %></td>
             <br>
             <td>￥0,000</td>
             
