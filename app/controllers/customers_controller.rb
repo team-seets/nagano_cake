@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
   def update
      @user = User.find(params[:id])
     if @user.save(user_params)
-      redirect_to customer_path, notice: ''
+      redirect_to customer_path
     else
       render 'edit'
     end
