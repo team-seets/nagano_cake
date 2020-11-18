@@ -2,9 +2,6 @@ class CustomersController < ApplicationController
 
   def show
     # @user = User.find(params[:id])
-
-    @users = User.all
-    @user = User.find(params[:id]
   end
 
   def edit
