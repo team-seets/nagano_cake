@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'products#top'
   get '/product/about' => 'products#about', as: 'about'
   resources :products, only: [:show,:index]
+  resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
 end
