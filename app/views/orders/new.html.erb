@@ -1,0 +1,58 @@
+<div class="container">
+  <div calss="row">
+  	<div class="col-xs-8"><br><br><br><br>
+        <h3 class="head-line title_h2">　　　　注文情報入力</h3><br>
+        <%= form_with :model => @order, method: :post, local: true  do |f| %>
+          <h4><b>支払い方法</b></h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+            <label class="form-check-label" for="radio1a">クレジットカード</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+            <label class="form-check-label" for="radio1a">銀行振込</label>
+          </div>
+          <h4><b>お届け先</b></h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+            <label class="form-check-label" for="radio1a">ご自身の住所</label>
+          </div>ここに表示させる
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+            <label class="form-check-label" for="radio1a">登録済み住所から選択</label>
+          </div>
+          <div class="input-group">
+	          <input type="text" class="form-control" placeholder="テキスト入力欄">
+	          <span class="input-group-btn">
+		        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+      			<span class="caret"></span>
+		        </button>
+	          	<ul class="dropdown-menu" role="menu">
+			          <li><a href="#">リンクのリスト１</a></li>
+			          <li><a href="#">リンクのリスト２</a></li>
+			          <li><a href="#">リンクのリスト３</a></li>
+		          </ul>
+	          </span>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+            <label class="form-check-label" for="radio1a">新しいお届け先</label>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-4 control-label" %>
+              <%= f.text_field :postal_code, class: "col-sm-3 form-control-static postal_code" %>
+            </div>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"住所", class: "col-sm-4 control-label" %>
+              <%= f.text_field :address, class: "col-sm-8 form-control-static address" %>
+            </div>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"宛名", class: "col-sm-4 control-label" %>
+              <%= f.text_field :name, class: "col-sm-3 form-control-static postal_code" %>
+            </div>
+          </div>
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary col-xs-4" %>
+        <% end %>
+			</div>
+    </div>
+  </div>
