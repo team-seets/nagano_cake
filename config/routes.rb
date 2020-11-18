@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'products#top'
   get '/product/about' => 'products#about', as: 'about'
   resources :products, only: [:show,:index]
-
+  resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :customers
   resources :products, only: [:index,:show]
 end

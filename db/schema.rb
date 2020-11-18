@@ -10,22 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_102351) do
+ActiveRecord::Schema.define(version: 2020_11_18_063515) do
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "customer_id"
+    t.integer "quantity"
+    t.datetime "updated_at", null: false
+    t.datetime "created_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
     t.string "first_name"
-    t.string "last_nam_kana"
     t.string "first_name_kana"
     t.string "last_name_kana"
     t.string "encrypted_password"
     t.string "address"
     t.string "postal_code"
-    t.string "telephone_number"
     t.boolean "is_deleted"
     t.string "email"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.integer "shipping_cost"
+    t.integer "total_payment"
+    t.integer "payment_methods"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
