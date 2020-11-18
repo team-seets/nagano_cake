@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get '/product/about' => 'products#about', as: 'about'
   resources :products, only: [:show,:index]
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
-  resources :customers
+  resources :customers, only:[:index, :show, :edit, :create, :update, :destroy]
 end

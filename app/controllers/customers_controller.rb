@@ -1,11 +1,17 @@
 class CustomersController < ApplicationController
 
+  def index
+  end
+
   def show
     # @user = User.find(params[:id])
   end
 
   def edit
-     @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    # if current_user.id != @user.user_id
+      # redirect_to customer_path(current_user.id)
+    # end
   end
 
   def update
