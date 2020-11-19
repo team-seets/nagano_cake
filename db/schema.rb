@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_19_080610) do
+ActiveRecord::Schema.define(version: 2020_11_19_070939) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "product_id"
@@ -21,19 +34,23 @@ ActiveRecord::Schema.define(version: 2020_11_19_080610) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.string "last_name"
     t.string "first_name"
-    t.string "last_nam_kana"
-    t.string "first_name_kana"
     t.string "last_name_kana"
-    t.string "encrypted_password"
+    t.string "first_name_kana"
     t.string "address"
     t.string "postal_code"
     t.string "telephone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "is_deleted"
-    t.string "email"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "orders", force: :cascade do |t|
@@ -58,25 +75,6 @@ ActiveRecord::Schema.define(version: 2020_11_19_080610) do
     t.boolean "is_active"
     t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "address"
-    t.string "postal_code"
-    t.string "telephone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
