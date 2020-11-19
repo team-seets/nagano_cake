@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
 
   def index
+     @user = User.find(params[:id])
   end
 
   def show
@@ -8,7 +9,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:id])
+     @customer = Customer.find(params[:id])
     # if current_user.id != @user.user_id
       # redirect_to customer_path(current_user.id)
     # end
