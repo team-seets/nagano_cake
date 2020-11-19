@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'products#top'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :customers, only:[:index, :show, :edit, :create, :update, :destroy]
 
+  devise_for :admins
   namespace :admins do
     resources :customers, only:[:top, :create, :destroy]
     resources :products, only:[:index, :new, :show, :edit, :create, :update]
