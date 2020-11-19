@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :customers, only:[:index, :show, :edit, :create, :update, :destroy]
-  
+
   namespace :admins do
     resources :customers, only:[:top, :create, :destroy]
     resources :products, only:[:index, :new, :show, :edit, :create, :update]
