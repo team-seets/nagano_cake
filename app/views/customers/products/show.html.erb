@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-3">
+    <ul class="list-group">
+      <li class="list-group-item"><h3>ジャンル検索</h3></li>
+	    <li class="list-group-item"><%= link_to 'ケーキ' %></li>
+	    <li class="list-group-item"><%= link_to '焼き菓子' %></li>
+	    <li class="list-group-item"><%= link_to 'プリン' %></li>
+	    <li class="list-group-item"><%= link_to 'キャンディ' %></li>
+    </ul>
+  </div>
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-5">
+    <h2><strong>いちごのショートケーキ</strong></h2>
+    <br>
+    <p>商品の説明文です商品の説明文です商品の説明文です商品の説明文で</p>
+    <p>す商品の説明文です商品の説明文です商品の説明文です商品の説明文</p>
+    <p>です商品の説明文です商品の説明文です商品の説明文です商品の説明</p>
+    <p>文です商品の説明文です商品の説明文です商品の説明文です商品の説</p>
+    <p>明文です。</p>
+    <br>
+    <br>
+    <h2>￥550</h2><h4>（税込）</h4>
+    <br>
+    <br>
+    <div class="btn-group">
+      <a href="#" class="btn btn-default">
+      個数選択
+      </a>
+      <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">１個</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">２個</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">３個</a></li>
+      </ul>
+    </div>
+    <%= link_to 'カートに入れる', about_path, class: "btn btn-primary" %>
+  </div>
