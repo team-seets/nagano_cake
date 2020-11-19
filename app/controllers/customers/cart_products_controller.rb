@@ -1,4 +1,4 @@
-class CartProductsController < ApplicationController
+class Customers::CartProductsController < ApplicationController
   def index
   end
 
@@ -10,7 +10,7 @@ class CartProductsController < ApplicationController
 
   def destroy
   end
-  
+
   def destroy_all
   end
 end

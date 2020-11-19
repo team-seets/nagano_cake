@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Customers::CustomersController < ApplicationController
 
   def index
     # @customer = Customer.find(params[:id])
