@@ -23,15 +23,12 @@ ActiveRecord::Schema.define(version: 2020_11_18_154847) do
   create_table "customers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
     t.string "first_name"
-    t.string "last_nam_kana"
     t.string "first_name_kana"
     t.string "last_name_kana"
     t.string "encrypted_password"
     t.string "address"
     t.string "postal_code"
-    t.string "telephone_number"
     t.boolean "is_deleted"
     t.string "email"
     t.string "name"
