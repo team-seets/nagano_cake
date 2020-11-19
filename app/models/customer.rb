@@ -14,9 +14,9 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
 
-  def active_for_authentication?
-    super && (self.is_deleted == false)
-  end
+  # def active_for_authentication?
+    # super && (self.is_deleted == false)
+  # end
 
 
 end

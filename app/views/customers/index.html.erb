@@ -4,9 +4,7 @@
     <p>退会すると、会員登録情報や</p>
     <p>これまでの購入履歴が閲覧できなくなります。</p>
     <p>退会する場合は、「退会する」をクリックしてください。</p>
-    <%= link_to "退会しない", customers_path, class: 'btn btn-primary' %>
-    <% if user_signed_in? && @user.id == current_user.id %>
-     　<%= link_to "退会する", root_path(current_user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-    <% end %>
+    <%= link_to "退会しない", customer_path(current_customer), class: 'btn btn-primary' %>
+
   </div>
 </body>
