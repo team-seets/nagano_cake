@@ -4,7 +4,7 @@
         <h3>登録情報編集</h3>
       </div>
     </div>
-          <%= form_with model: @user, local:true do |f| %>
+          <%= form_with model:@customer, local:true do |f| %>
             <div class="field form-group col-xs-12">
               <%= f.label :名前　　　　　　　（姓） %>
               <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
