@@ -1,5 +1,5 @@
 class AddIsDeletedToCustomers < ActiveRecord::Migration[5.2]
   def change
-    add_column :customers, :is_deleted, :boolean,　default: false
+   change_column_default :customers, :is_deleted, :boolean,　default: false
   end
 end

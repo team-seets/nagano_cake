@@ -5,7 +5,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field form-group col-xs-12">
+<<<<<<< HEAD:app/views/customer/registrations/new.html.erb
+    <%= f.label :名前（姓） %>
+=======
     <%= f.label :名前（姓）%>
+>>>>>>> develop:app/views/devise/registrations/new.html.erb
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
     <%= f.label :（名）%>
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
