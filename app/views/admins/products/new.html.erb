@@ -3,5 +3,5 @@
     <h4><span style="background-color: #afeeee">商品新規登録</span></h4>
     
     
-    <%= attachment_image_tag(@products, :image_id, :fill, 50, 50, format:'webp') %>
+    <%= attachment_image_tag(@products, :image_id, :fill, 1, 1, fallback: "いちごのショートケーキ.jpg") %>
     
