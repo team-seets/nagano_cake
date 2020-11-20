@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'customers/products#top'
   get 'product/about' => 'customers/products#about', as: 'about'
-  resources :products, only: [:show,:index]
+  resources :products, only: [:show,:index], module: 'customers'
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :customers, only:[:index, :show, :edit, :create, :update, :destroy]
