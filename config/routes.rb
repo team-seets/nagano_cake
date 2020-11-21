@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :products, only: [:show,:index], module: 'customers'
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
-  resources :customers, only:[:index, :show, :edit, :create, :update, :destroy]
+  resources :customers do
+    collection do
+    get :quit
+  end
+end
 
   devise_for :admins, controllers: {
   sessions: 'admin/sessions',
@@ -19,8 +23,9 @@ Rails.application.routes.draw do
   registrations: 'admin/registrations'
   }
   namespace :admins do
-    resources :customers, only:[:top, :create, :destroy]
+    resources :customers, only:[:index, :show, :edit, :update]
     resources :products, only:[:index, :new, :show, :edit, :create, :update]
+    get 'top' => 'products#top'
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
     resources :genres, only: [:index, :create, :edit, :update]

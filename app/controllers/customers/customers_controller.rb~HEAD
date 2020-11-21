@@ -1,6 +1,9 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
 
+  def index
+  end
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -29,4 +32,5 @@ class CustomersController < ApplicationController
     def customer_params
        params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
     end
+
 end
