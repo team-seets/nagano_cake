@@ -23,8 +23,9 @@ end
   registrations: 'admin/registrations'
   }
   namespace :admins do
-    resources :customers, only:[:top, :create, :destroy]
+    resources :customers, only:[:index, :show, :edit, :update]
     resources :products, only:[:index, :new, :show, :edit, :create, :update]
+    get 'top' => 'products#top'
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
     resources :genres, only: [:index, :create, :edit, :update]
