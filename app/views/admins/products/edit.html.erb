@@ -20,18 +20,7 @@
       <div class="genre1">
         <%= f.label :ジャンル   %>
         <div class="btn-group">
-          <a href="#" class="btn btn-default">
-            -- 選択してください --
-          </a>
-          <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ケーキ</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">焼き菓子</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">プリン</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">キャンディ</a></li>
-          </ul>
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
         </div>
       </div>
       <br>
@@ -43,17 +32,7 @@
       <div class="status1">
         <%= f.label :販売ステータス  %>
         <div class="btn-group">
-          <a href="#" class="btn btn-default">
-            -- 選択してください --
-          </a>
-          <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
-          <br>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売中</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">売り切れ</a></li>
-          </ul>
+          <%= f.select :is_active, [['販売中','販売中'], ['売り切れ', '売り切れ'] ] , {include_blank: '-- 選択してください --'} %>
         </div>
       </div>
       <br>
