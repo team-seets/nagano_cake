@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-offset-2 col-xs-8"><br><br><br><br><br>
+    <h4><span style="background-color: #afeeee">商品詳細</span></h4><br>
+    
+      <div class="col-xs-4">
+        <%= attachment_image_tag @product, :image, size:'250x250' %>
+      </div>
+      <div class="name1">
+        商品名
+        <%= @product.name %>
+      </div>
+      <br>
+      <div class="introduction1">
+        商品説明
+        <%= @product.introduction %>
+      </div>
+      <div class="genre1">
+        ジャンル
+        <%#=@product.genre.name %>
+      </div>
+      <div class="price1">  
+        税込価格（税抜価格）
+        <%= @product.price %> 円
+      </div>
+      <div class="status1">
+        販売ステータス
+        <%=@product.is_active %>
+      </div>
+      <div class="btn1">  
+        <%= link_to "編集する", edit_admins_product_path(@product.id), class:"btn btn-primary" %>
+      </div>
+  </div>
+</div>

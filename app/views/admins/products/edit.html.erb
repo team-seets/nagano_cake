@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-offset-2 col-xs-7"><br><br><br><br><br><br>
+    <h4><span style="background-color: #afeeee">商品編集</span></h4>
+    
+    <%= form_with model:@product, url: admins_product_path(@product.id), local:true do |f| %>
+      <br><br><br><br><br>
+      <div class="col-xs-4">
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="name1">
+        <%= f.label :商品名   %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+      <br>
+      <div class="introduction1">
+        <%= f.label :商品説明   %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+      </div>
+      <br>
+      <div class="genre1">
+        <%= f.label :ジャンル   %>
+        <div class="btn-group">
+          <a href="#" class="btn btn-default">
+            -- 選択してください --
+          </a>
+          <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ケーキ</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">焼き菓子</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">プリン</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">キャンディ</a></li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="price1">  
+        <%= f.label :税抜き価格   %>
+        <%= f.text_field :price, autofocus: true, autocomplete: "price" %> 円
+      </div>
+      <br>
+      <div class="status1">
+        <%= f.label :販売ステータス  %>
+        <div class="btn-group">
+          <a href="#" class="btn btn-default">
+            -- 選択してください --
+          </a>
+          <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
+          <br>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売中</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">売り切れ</a></li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="btn1">  
+        <%= f.submit "変更を保存", class:"btn btn-primary" %>
+      </div>
+      
+    <% end %>
