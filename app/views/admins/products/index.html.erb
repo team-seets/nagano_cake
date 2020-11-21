@@ -17,9 +17,8 @@
     			<th>1</th>
     			<td><%= link_to product.name,admins_product_path(product.id) %></td>
     			<td><%= product.price %></td>
-    			<td><%#= product.genre.name %></td>
+    			<td><%= product.genre.name %></td>
     			<td><%= product.is_active %></td>
-    			<td><%#= attachment_image_tag product, :image, size:'100x100'%></td>
     		</tr>
         <% end %>
     	</tbody>
