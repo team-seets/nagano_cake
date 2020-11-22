@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :price
       t.string :image_id
-      t.boolean :is_active
+      t.boolean :is_active, default: false
       t.timestamp :updated_at
       t.timestamp :created_at
 
