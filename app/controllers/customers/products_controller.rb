@@ -1,5 +1,6 @@
 class Customers::ProductsController < ApplicationController
   def top
+    @product = Product.all
   end
 
   def about
@@ -10,5 +11,6 @@ class Customers::ProductsController < ApplicationController
   end
 
   def show
+     @product = Product.find(params[:id])
   end
 end
