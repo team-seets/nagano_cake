@@ -22,6 +22,12 @@
           <li><%= link_to ' ログイン', new_customer_session_path, class: "btn btn-default navbar-btn"%></li>
 
         <% end %>
+      	<% if customer_signed_in? %>
+			    <%= form_with url:  search_products_path, method: :get, local: true do |f| %>
+	  		    <%= text_field_tag :search_word %>
+	  　	    <%= submit_tag '検索', :name => nil %>
+		    	<% end %>
+	    	<% end %>
       </ul>
     </nav>
   </div>
