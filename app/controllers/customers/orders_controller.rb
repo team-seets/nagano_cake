@@ -4,9 +4,9 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
-    @order = Orders.new(order_params)
+    @order = Order.new(order_params)
     @order.save
-    redirect_to thanx_orders_path
+    redirect_to thanx_path
   end
 
   def thanx
@@ -20,5 +20,10 @@ class Customers::OrdersController < ApplicationController
   end
 
   def complete
+  end
+
+  private
+  def order_params
+    params.require(:order).permit(:postal_code, :address, :payment_methods, :name, :total_payment)
   end
 end
