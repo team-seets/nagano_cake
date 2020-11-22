@@ -10,52 +10,17 @@
 
   </div>
   <div class="col-xs-9">
-    <h1>商品一覧(全何件)</h1>
+    <h1>
+      <strong>商品一覧</strong> (全<%= @product.count %>件)
+    </h1>
     <table class="table">
         <thead></thead>
         <tbody>
-          <tr>
-            
-            <br>
-            <td><%= link_to 'ケーキ',product_path(@product) %></td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-          </tr>
-          <tr>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-            
-            <br>
-            <td>商品名</td>
-            <br>
-            <td>￥0,000</td>
-          </tr>
+          <% @product.each do |product| %>
+    		    <td>
+    		      <div class="image11"><%= attachment_image_tag product, :image, size:'200x170' %></div>
+    		      <div class="name11"><%= link_to product.name,product_path(product.id) %></div>
+              <div class="image11">¥<%= product.price %></div>
+            </td>
+          <% end %>
         <tbody>
