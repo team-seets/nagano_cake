@@ -4,5 +4,5 @@ class Product < ApplicationRecord
   # mount_uploader :image, ImageUploader
   mount_uploader :image, ImageUploader
   belongs_to :genre, dependent: :destroy
-
+  enum is_active: { 売り切れ: false, 販売中: true }
 end
