@@ -13,6 +13,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders
+  has_many :addresses
+  
 
    enum is_deleted: {"有効": false, "退会済み": true}
 

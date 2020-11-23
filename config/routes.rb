@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'orders/thanx' => 'customers/orders#thanx', as: 'thanx'
   get 'orders/complete' => 'customers/orders#complete', as: 'complete'
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
+  resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
 
   resources :products do
     get :search, on: :collection
