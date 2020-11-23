@@ -4,12 +4,12 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
-    redirect_to thanx_path
+    redirect_to complete_path
   end
 
-  def thanx
+  def complete
+    @order = Order.new(order_params)
+    @order.save
   end
 
   def index
@@ -19,8 +19,9 @@ class Customers::OrdersController < ApplicationController
   def show
   end
 
-  def complete
+  def thanx
   end
+
 
   private
   def order_params
