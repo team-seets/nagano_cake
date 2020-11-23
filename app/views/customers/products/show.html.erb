@@ -8,33 +8,31 @@
 	    <li class="list-group-item"><%= link_to 'キャンディ' %></li>
     </ul>
   </div>
-  <div class="col-xs-4">
+  <div class="col-xs-3">
+    <%= attachment_image_tag @product, :image, size:'330x270' %>
   </div>
-  <div class="col-xs-5">
-    <h2><strong>いちごのショートケーキ</strong></h2>
+  <div class="col-xs-6">
+    <h2><strong><%= @product.name %></strong></h2>
     <br>
-    <p>商品の説明文です商品の説明文です商品の説明文です商品の説明文で</p>
-    <p>す商品の説明文です商品の説明文です商品の説明文です商品の説明文</p>
-    <p>です商品の説明文です商品の説明文です商品の説明文です商品の説明</p>
-    <p>文です商品の説明文です商品の説明文です商品の説明文です商品の説</p>
-    <p>明文です。</p>
+    <%= @product.introduction %>
     <br>
     <br>
-    <h2>￥550</h2><h4>（税込）</h4>
+    <h2>￥<%= @product.price %></h2><h4>（税抜）</h4>
     <br>
     <br>
     <div class="btn-group">
-      <a href="#" class="btn btn-default">
-      個数選択
-      </a>
-      <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu" role="menu">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">１個</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">２個</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">３個</a></li>
-      </ul>
+      <select class="btn btn-default">
+　　　　<option value=''>個数選択</option>
+　　　　<div class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+　　　　  <span class="caret"></span>
+        </div>
+　　　　<div class="dropdown-menu" role="menu">
+          <option role="presentation">1個</option>
+          <option role="presentation">2個</option>
+          <option role="presentation">3個</option>
+        </div>
+      </select>
     </div>
     <%= link_to 'カートに入れる', about_path, class: "btn btn-primary" %>
   </div>
+</div>
