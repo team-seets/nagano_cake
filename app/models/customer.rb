@@ -13,9 +13,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders
- cart_products3
   has_many :cart_products
-  
   has_many :addresses
   
 

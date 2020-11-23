@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root 'customers/products#top'
 
   scope module: :customers do
-  get 'product/about' => 'products#about', as: 'about'
   resources :products, only: [:show,:index]
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy]
