@@ -8,31 +8,36 @@
 	    <li class="list-group-item"><%= link_to 'キャンディ' %></li>
     </ul>
   </div>
-  <div class="col-xs-3">
-    <%= attachment_image_tag @product, :image, size:'330x270' %>
-  </div>
-  <div class="col-xs-6">
-    <h2><strong><%= @product.name %></strong></h2>
-    <br>
-    <%= @product.introduction %>
-    <br>
-    <br>
-    <h2>￥<%= @product.price %></h2><h4>（税抜）</h4>
-    <br>
-    <br>
-    <div class="btn-group">
-      <select class="btn btn-default">
-　　　　<option value=''>個数選択</option>
-　　　　<div class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-　　　　  <span class="caret"></span>
-        </div>
-　　　　<div class="dropdown-menu" role="menu">
-          <option role="presentation">1個</option>
-          <option role="presentation">2個</option>
-          <option role="presentation">3個</option>
-        </div>
-      </select>
-    </div>
-    <%= link_to 'カートに入れる', about_path, class: "btn btn-primary" %>
-  </div>
-</div>
+  <%= form_with model:@cart_product, url:cart_products_path,  method: :post, local:true do |f| %>
+      <br><br><br><br><br>
+      <div class="col-xs-3">
+      <%= attachment_image_tag @product, :image, size:'330x270' %>
+      </div>
+      <div class="col-xs-6">
+        <h2><strong><%= @product.name %></strong></h2>
+      <br>
+      <%= @product.introduction %>
+      <br>
+      <br>
+      <h2>￥<%= @product.price %></h2><h4>（税抜）</h4>
+      <br>
+      <br>
+    <!--  <div class="btn-group">-->
+    <!--  <select class="btn btn-default">-->
+　　　　<!--<option value=''>個数選択</option>-->
+　　　　<!--<div class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+　　　　<!--  <span class="caret"></span>-->
+    <!--    </div>-->
+　　　　<!--<div class="dropdown-menu" role="menu">-->
+    <!--      <option role="presentation">1個</option>-->
+    <!--      <option role="presentation">2個</option>-->
+    <!--      <option role="presentation">3個</option>-->
+    <!--    </div>-->
+    <!--  </select>-->
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      <%= f.number_field :quantity %>
+      <!--</div>-->
+      <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+      </div>
+  <% end %>
+  
