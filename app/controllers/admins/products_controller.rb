@@ -5,7 +5,7 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
-     @product = Product.all
+    @product = Product.all
   end
 
   def new
@@ -34,7 +34,7 @@ class Admins::ProductsController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
   def product_params
     params.require(:product).permit( :image, :name, :introduction, :price, :genre_id, :is_active )
