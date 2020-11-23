@@ -54,8 +54,10 @@ ActiveRecord::Schema.define(version: 2020_11_22_022556) do
   end
 
   create_table "end_users", force: :cascade do |t|
- end
-  
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.boolean "is_active"
@@ -86,4 +88,5 @@ ActiveRecord::Schema.define(version: 2020_11_22_022556) do
     t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
   end
+
 end
