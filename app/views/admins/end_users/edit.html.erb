@@ -1,7 +1,7 @@
  <div class="container">
     <table>
       <tr>
-        <td><h3><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h3></td><br><br><br><br>
+        <td><h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2></td><br><br><br><br>><br><br><br>
       <tr>
     </table>
     <%= form_with model: @customer, url: admins_end_user_path(@customer), local: true do |f| %>
