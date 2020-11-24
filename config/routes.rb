@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'customers/products#top'
+
+  scope module: :customers do
+  resources :products, only: [:show,:index]
+  resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
+  resources :cart_products, only: [:index,:create,:update,:destroy]
+  delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all' 
+
   get 'product/about' => 'customers/products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'
   get 'orders/complete' => 'customers/orders#complete', as: 'complete'
@@ -14,10 +21,12 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show], module: 'customers'
 
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
+  resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
 
   resources :products do
     get :search, on: :collection
   end
+
 
   resources :customers do
     collection do
@@ -26,6 +35,7 @@ Rails.application.routes.draw do
 
 
 
+end
 end
 
   devise_for :admins, controllers: {

@@ -36,7 +36,7 @@
 .row2 {
   margin-top:101px;
   margin-left:280px;
-  margin-right:300px;
+  margin-right:400px;
 }
 .body {
   margin-top:81px;
@@ -82,4 +82,10 @@
 
 .p1 {
   font-size:23px;
+}
+
+.btn11 {
+  display:flex;
+  justify-content: space-between;
+  height:40px;
 }

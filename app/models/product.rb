@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
+
+  has_many :cart_product, dependent: :destroy
+
   has_many :cart_products, dependent: :destroy
+
   attachment :image
   has_many :order_details, dependent: :destroy
   # mount_uploader :image, ImageUploader
