@@ -1,16 +1,17 @@
 <div calss="row">
   <div class="col-xs-9">
     <h2 class="head-line title_h2 text-center">注文情報確認</h2>
-       <table class="table table-hover table-inverse table-bordered">
-        <thead>
-          <tr class="info">
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
+      <%= form_with model:@order, url: orders_path,  method: :post, local:true do |f| %>
+         <table class="table table-hover table-inverse table-bordered">
+          <thead>
+            <tr class="info">
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
           <% @cart_products.each do |cart_product| %>
             <tr>
               <td class="text-left">
@@ -27,10 +28,9 @@
                 <%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %>
               </td>
             </tr>
-          <% end %>	
-        </tbody>
-      </table>
-     
+          <% end %>
+          </tbody>
+        </table>
       <div class="col-xs-3 billing">
       <table class="table table-hover table-condensed table-bordered">
           <tr>
@@ -46,22 +46,24 @@
             <td class="text-right"><%= (@totalprice + 800).to_s(:delimited) %></td>
           </tr>
       </table>
-    </div>
+      </div>
     <div class="col-xs-6 billing">
       <table class="table table-hover table-condensed table-bordered">
         <tr>
           <th  class="info">支払方法</th>
           <td class="text-left">
-            <%= @order %>
+            <%= @order.payment_methods %>
           </td>
         </tr>
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= @postal_code + @address + @name %>
+            <%= @order.postal_code + @order.address + @order.name %>
           </td>
         </tr>
       </table>
-      <br><br><%= link_to '購入を確定する', customers_thanx_path, class: "btn btn-success" %>
+      
+      <br><br><%= f.submit "購入を確定する", class:"btn btn-success" %>
     </div>
+      <% end %>
   </div>
