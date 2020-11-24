@@ -5,12 +5,12 @@ class Customers::OrdersController < ApplicationController
 
   def create
     @order = Order.new
+    @order.save
     redirect_to complete_path
   end
 
   def complete
     @order = Order.new(order_params)
-    @order.save
   end
 
   def thanx
