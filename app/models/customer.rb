@@ -16,8 +16,6 @@ class Customer < ApplicationRecord
   has_many :cart_products
   has_many :addresses
   
-
-
    enum is_deleted: {"有効": false, "退会済み": true}
 
   # def active_for_authentication?
