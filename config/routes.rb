@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 
   get 'product/about' => 'customers/products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'
-  resources :orders, only: [:new, :create, :index, :show], module: 'customers'
-  post 'orders/thanx' => 'customers/orders#thanx', as: 'thanx'
   get 'orders/complete' => 'customers/orders#complete', as: 'complete'
+  get 'orders/thanx' => 'customers/orders#thanx', as: 'thanx'
+  resources :orders, only: [:new, :create, :index, :show], module: 'customers'
+
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
 
