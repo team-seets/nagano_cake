@@ -10,15 +10,12 @@ Rails.application.routes.draw do
 
   scope module: :customers do
   resources :products, only: [:show,:index]
-  resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
-  resources :cart_products, only: [:index,:create,:update,:destroy]
+  resources :orders, only: [:new, :create, :index, :show]
   delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all' 
 
   get 'product/about' => 'customers/products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'
-  get 'orders/complete' => 'customers/orders#complete', as: 'complete'
-  get 'orders/thanx' => 'customers/orders#thanx', as: 'thanx'
-  resources :orders, only: [:new, :create, :index, :show], module: 'customers'
+ # resources :orders, only: [:new, :create, :index, :show]
 
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
@@ -35,6 +32,10 @@ Rails.application.routes.draw do
 
 end
 end
+  namespace :customers do
+    post 'orders/complete' => 'orders#complete', as: 'complete'
+    get 'orders/thanx' => 'orders#thanx', as: 'thanx'
+  end
 
   devise_for :admins, controllers: {
   sessions: 'admin/sessions',

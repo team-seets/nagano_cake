@@ -11,37 +11,39 @@
           </tr>
         </thead>
         <tbody>
-          <!--% @cart_products.each do |cart_product| %>-->
+          <% @cart_products.each do |cart_product| %>
             <tr>
               <td class="text-left">
-                <!--  %= attachment_image_tag(cart_product, :image, size: "60x50", fallback: "no_image.jpg") %>-->
-                <!--%= cart_product.name %>-->
+                <%= attachment_image_tag(cart_product.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+                <%= cart_product.product.name %>
               </td>
               <td class="text-right">
-                ¥
+                <%= cart_product.product.price %>
               </td>
               <td class="text-right">
-                <!--%= cart_product.quantity %>-->
+                <%= cart_product.quantity %>
               </td>
               <td class="text-right">
-                ¥
+                <%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %>
               </td>
             </tr>
+          <% end %>	
         </tbody>
       </table>
+     
       <div class="col-xs-3 billing">
       <table class="table table-hover table-condensed table-bordered">
           <tr>
             <th class="info">送料</th>
-            <td class="text-right col-xs-5">¥<%= @order.shipping_cost %></td>
+            <td class="text-right col-xs-5">800</td>
           </tr>
           <tr>
             <th class="info">商品合計</th>
-            <td class="text-right">¥<!--%= total_price(@cart_product).to_s(:delimited) %>--></td>
+            <td class="text-right"><%= @totalprice.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th class="info">請求金額</th>
-            <td class="text-right">¥<!--%= billing(@order).to_s(:delimited) %>--></td>
+            <td class="text-right"><%= (@totalprice + 800).to_s(:delimited) %></td>
           </tr>
       </table>
     </div>
@@ -50,16 +52,16 @@
         <tr>
           <th  class="info">支払方法</th>
           <td class="text-left">
-            <%= @order.payment_methods %>
+            <%= @order %>
           </td>
         </tr>
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+            <%= @postal_code + @address + @name %>
           </td>
         </tr>
       </table>
-
+      <br><br><%= link_to '購入を確定する', customers_thanx_path, class: "btn btn-success" %>
     </div>
   </div>
