@@ -4,12 +4,16 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new
     redirect_to complete_path
   end
 
   def complete
     @order = Order.new(order_params)
     @order.save
+  end
+
+  def thanx
   end
 
   def index
