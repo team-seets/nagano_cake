@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope module: :customers do
   resources :products, only: [:show,:index]
   resources :orders, only: [:new, :create, :index, :show]
-  delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all' 
+  delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all'
 
   get 'product/about' => 'customers/products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'

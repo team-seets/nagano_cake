@@ -1,15 +1,17 @@
 class Customers::OrdersController < ApplicationController
   def new
     @order = Order.new
-    
+    @addresses = Address.all
   end
 
   def create
-    # @order = Order.new(order_params)
-    # @order.customer_id = current_customer.id
-    # @order.save
-    # redirect_to customers_complete_path
+    @cart_products = current_customer.cart_products
+    @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
+    @order = current_customer.orders.new(order_params)
+    @order.save!
+    render customers_complete_path
   end
+
 
   def complete
     @cart_products = current_customer.cart_products
@@ -38,4 +40,9 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :payment_methods, :name, :total_payment, :shipping_cost)
   end
+
+  def address_params
+    params.require(:order).permit(:postal_code, :address, :name)
+  end
 end
+
