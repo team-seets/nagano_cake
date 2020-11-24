@@ -23,9 +23,7 @@ Rails.application.routes.draw do
   resources :cart_products, only: [:index,:create,:update,:destroy,:destroy_all]
   resources :addresses, only: [:new, :index, :edit, :create, :update, :destroy]
 
-  resources :products do
-    get :search, on: :collection
-  end
+  get 'searches' => 'search#search', as: 'search'
 
 
   resources :customers do
