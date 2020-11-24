@@ -13,18 +13,9 @@
           <div class="form-check">
             <label><%= f.radio_button :select, checked: true %>登録済住所から選択</label><br>
           </div>
-          <div class="input-group">
-	          <input type="text" class="form-control" placeholder="テキスト入力欄">
-	          <span class="input-group-btn">
-		        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      			<span class="caret"></span>
-		        </button>
-	          	<ul class="dropdown-menu" role="menu">
-			          <li><a href="#">リンクのリスト１</a></li>
-			          <li><a href="#">リンクのリスト２</a></li>
-			          <li><a href="#">リンクのリスト３</a></li>
-		          </ul>
-	          </span>
+              <%= f.fields_for @addresses do |t| %>
+              <p class="registered-address"><%= t.select(:id, current_customer.deliveries.map { |deli| [deli.full_address, deli.id] }) %></p>
+              <% end %>
           </div>
           <label><%= f.radio_button :select, "新しいお届け先" %>新しいお届け先</label>
             <div class="field form-group col-xs-11">
