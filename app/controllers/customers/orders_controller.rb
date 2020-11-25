@@ -8,6 +8,24 @@ class Customers::OrdersController < ApplicationController
     @cart_products = current_customer.cart_products
     @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
     @order = current_customer.orders.new(order_params)
+    if params[:order][:addresses] == "myaddress"
+      @order.postal_code = current_customer.postal_code
+      @order.address     = current_customer.address
+      @order.name        = current_customer.last_name +
+                           current_customer.first_name
+    elsif params[:order][:addresses] == "shipping_addresses"
+      ship = Address.find(params[:order][:address_id])
+      @order.postal_code = ship.postal_code
+      @order.address     = ship.address
+      @order.name        = ship.name
+    elsif params[:order][:addresses] == "new_address"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address     = params[:order][:address]
+      @order.name        = params[:order][:name]
+      @ship = "1"
+
+    end
+
     @order.save!
     render customers_complete_path
   end
