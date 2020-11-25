@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :products, only: [:show,:index]
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy]
-  delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all' 
+  delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all'
 
   get 'product/about' => 'customers/products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :customers do
     collection do
     get :quit
+    patch :withdraw
   end
 
 
@@ -49,5 +50,8 @@ end
     resources :order_details, only: [:update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
+
+  get 'searches' => 'search#search', as: 'search'
+
   end
 end
