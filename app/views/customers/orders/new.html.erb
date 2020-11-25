@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-xs-offset-1 col-xs-11"><br><br><br><br>
     <h2>注文情報入力</h2>
-        <%= form_with model: @order, url:orders_path, local: true  do |f| %>
+        <%= form_with model: @order, url:customers_complete_path, local: true  do |f| %>
           <h4><b>支払い方法</b></h4>
             <label><%= f.radio_button :payment_methods, "クレジットカード", checked: true %>クレジットカード</label><br>
             <label><%= f.radio_button :payment_methods, "銀行振込" %>銀行振込</label>
