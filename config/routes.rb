@@ -10,8 +10,13 @@ Rails.application.routes.draw do
 
   scope module: :customers do
   resources :products, only: [:show,:index]
+
+  resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
+  resources :cart_products, only: [:index,:create,:update,:destroy]
+    
   get 'orders/thanx' => 'orders#thanx', as: 'thanx'
   resources :orders, only: [:new, :create, :index, :show]
+
   delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all'
 
   get 'product/about' => 'customers/products#about', as: 'about'
@@ -27,6 +32,7 @@ Rails.application.routes.draw do
   resources :customers do
     collection do
     get :quit
+    patch :withdraw
   end
 
 
@@ -51,5 +57,8 @@ end
     resources :order_details, only: [:update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
+
+  get 'searches' => 'search#search', as: 'search'
+
   end
 end

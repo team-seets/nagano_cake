@@ -1,0 +1,23 @@
+  <% if admin_signed_in? %><br><br>
+    <div class="col-xs-9">
+      <h2><strong>会員一覧</strong></h2>
+      <table class="table">
+         <thead>
+    	    <tr>
+        		<th>name</th>
+        		<th>会員ID</th>
+    				<th>email</th>
+    				<th>会員ステータス</th>
+    	  	</tr>
+          <% @customers.each do |customer| %>
+    		    <tr>
+    		      <th><%= link_to admins_end_user_path(customer) do %><%= customer.first_name %><%= customer.last_name %><% end %></th>
+    		      <th><%= customer.id %></th>
+              <th><%= customer.email %></th>
+              <th><%= customer.is_deleted %></th>
+            </tr>
+          <% end %>
+        <tbody>
+      </table>
+    </div>
+  <% end %>
