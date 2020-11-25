@@ -14,18 +14,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @cart_products.each do |cart_product| %>
+							<% @orders.each do |order| %>
 							<tr>
-								<th><%#= order.created_at.strftime('%Y/%m/%d') %></th>
+								<th><%= order.created_at.strftime('%Y/%m/%d') %></th>
 								<td>
-									<%#= order.postal_code %><br>
-									<%#= order.address %><br>
-									<%#= cart_product.product.name.all%>
+									<%= order.postal_code %><br>
+									<%= order.address %><br>
+									<%= order.name%>
 								</td>
-								<td></td>
-								<td></td>
-								<td><%#= order.order_status %></td>
-								<td><%#= link_to '表示する', order_path(@order), class: "btn btn-primary" %></td></td>
+								
+								<td><% order.order_details.each do |order_detail| %>
+								<%= order_detail.product.name%><% end %></td>
+								
+								<td><%= order.total_payment%></td>
+								<td><%= order.status %></td>
+								<td><%= link_to '表示する', order_path(order), class: "btn btn-primary" %></td></td>
 							</tr>
 							<% end %>
 						</tbody>
