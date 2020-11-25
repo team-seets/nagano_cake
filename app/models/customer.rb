@@ -23,9 +23,6 @@ class Customer < ApplicationRecord
 
    enum is_deleted: {"有効": false, "退会済み": true}
 
-  # def active_for_authentication?
-    # super && (self.is_deleted == false)
-  # end
 
   def self.search(method,word)
     if method == "perfect_match"
