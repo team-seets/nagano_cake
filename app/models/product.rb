@@ -7,4 +7,12 @@ class Product < ApplicationRecord
   
   belongs_to :genre
   enum is_active: { 売り切れ: false, 販売中: true }
+
+  def self.search(method,word)
+    if method == "perfect_match"
+      product = Product.where(name: "#{word}")
+    elsif method == "partial_match"
+      product = Product.where("name LIKE ?","%#{word}%")
+    end
+  end
 end

@@ -24,4 +24,19 @@ class Customer::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+
+  # before_action :reject_customer, only: [:create]
+
+  # protected
+
+  # @customer = Customer.find_by(email: params[:user][:email].downcase)
+  #   if @customer
+  #     if (@customer.valid_password?(params[:user][:password]) && (@customer.active? == false))
+  #       flash[:error] = "退会済みです。"
+  #       redirect_to new_customer_registration_path
+  #     end
+  #   end
+
+
 end

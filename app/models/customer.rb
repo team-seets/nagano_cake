@@ -15,12 +15,22 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :cart_products
   has_many :addresses
-  
+
+  def active?
+    super && (self.is_deleted == false)
+  end
+
+
    enum is_deleted: {"有効": false, "退会済み": true}
 
-  # def active_for_authentication?
-    # super && (self.is_deleted == false)
-  # end
+
+  def self.search(method,word)
+    if method == "perfect_match"
+      customer = Customer.where("(first_name || last_name)='#{word}'")
+    elsif method == "partial_match"
+      customer = Customer.where("(first_name || last_name)LIKE ?","%#{word}%")
+    end
+  end
 
 
 end

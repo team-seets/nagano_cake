@@ -1,0 +1,19 @@
+  <% if customer_signed_in? %>
+      <div class="container"><br><br><br><br><br><br>
+        <h1><strong>商品一覧</strong></h1><br>
+        <table class="table">
+          <thead>
+  					<tr>
+          		<th>name</th>
+    					<th>price</th>
+  			  	</tr>
+            <% @products.each do |product| %>
+      		    <td>
+      		      <div class="name11"><%= link_to product.name,product_path(product.id) %></div>
+                <div class="image11">¥<%= product.price %></div>
+              </td>
+            <% end %>
+          </thead>
+        </table>
+      </div>
+    <% end %>
