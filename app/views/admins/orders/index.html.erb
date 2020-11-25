@@ -15,14 +15,18 @@
           <% @orders.each do |order| %>
             <tr>
               <td class="text-left">
-              <%= link_to admins_order_path(order) do %><!-- この記述でリンクできるか？ -->
+              <%= link_to admins_order_path(order) do %>
                 <%= order.created_at %>
               <% end %>
               </td>
-              <td class="order-td"><%= order.name %></td>
+              <td class="order-td"><%= order.name %>様</td>
 
 
-              <td class="order-td"><%= order.order_details.count %></td>
+              <td class="order-td"><%= order.order_details.pluck(:amount).sum %>
+                <!--%= order.order_details.count % -->
+                <!--% order.order_details.each do |order_detail| %>
+                    % order_detail.amount %>% end %-->
+              </td></td>
 
               <td class="order-td"><%= order.status %></td>
             </tr>
