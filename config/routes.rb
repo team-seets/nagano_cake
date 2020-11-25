@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :customers do
   resources :products, only: [:show,:index]
+  get 'orders/thanx' => 'orders#thanx', as: 'thanx'
   resources :orders, only: [:new, :create, :index, :show]
   delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all'
 
@@ -34,7 +35,7 @@ end
 end
   namespace :customers do
     post 'orders/complete' => 'orders#complete', as: 'complete'
-    get 'orders/thanx' => 'orders#thanx', as: 'thanx'
+    #get 'orders/thanx' => 'orders#thanx', as: 'thanx'
   end
 
   devise_for :admins, controllers: {
