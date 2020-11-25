@@ -34,15 +34,47 @@
             <th>数量</th>
             <th>小計</th>
             <th>制作ステータス</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-
-
-
+            <% @order_detail.each do |order_detail| %>
+            <tr>
+              <td class="text-left">
+                <%= order_detail.product.name %>
+              </td>
+              <td class="text-right">
+                <%= order_detail.product.price %>
+              </td>
+              <td class="text-right">
+                <%= order_detail.amount %>
+              </td>
+              <td class="text-right">
+                <%= (order_detail.product.price * order_detail.amount).to_s(:delimited) %>
+              </td>
+              <td class="text-right">
+                <%= form_for(order_detail, url: admins_order_detail_path(order_detail.id), method: :patch) do |f| %>
+                  <%= f.select :making_status, OrderDetail.making_statuses.keys.map{ |k| k } %>
+                    <td>
+                      <%= f.submit '更新'  ,class: "btn btn-warning" %>
+                    </td>
+			          <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
+    <div class="col-xs-5">
+      <h4>
+        <strong>商品合計</strong>　<%= @totalprice.to_s(:delimited) %>円
+      </h4>
+      <h4>
+        <strong>送料</strong>      800円
+      </h4>
+      <h4>
+        <strong>請求金額合計      <%= (@totalprice + 800).to_s(:delimited) %>円</strong>
+      </h4>
     </div>
   </div>
 </div>

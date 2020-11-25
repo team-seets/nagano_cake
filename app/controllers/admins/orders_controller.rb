@@ -1,8 +1,10 @@
 class Admins::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @cart_products = current_customer.cart_products
+    @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
     #@cart_products = @order.cart_products
-    #@order_details = OrderDetails.all
+    @order_detail = @order.order_details
 		#@order_detail = params[:making_status]
   end
 
