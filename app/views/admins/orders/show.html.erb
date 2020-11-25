@@ -37,16 +37,8 @@
           </tr>
         </thead>
         <tbody>
-          <!--% @cart_products.each do |cart_product| %>
-           <tr>
-          <td class="order-td">%= cart_product.product.name %></td>
-          <td class="order-td">%= cart_product.product.price %></td>
-          <td class="order-td">%= cart_product.quantity %></td>
-          <td class="order-td">%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %></td>
-          %= form_for(@cart_product, url: admins_order_detail_path, method: :patch) do |f| %><td class="order-td">
-            %= f.select :making_status, OrderDetail.making_status.keys.map{ |k| k } %>
-          </td>% end %-->
-          </tr>
+
+
 
         </tbody>
       </table>

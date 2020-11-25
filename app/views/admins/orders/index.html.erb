@@ -19,11 +19,11 @@
                 <%= order.created_at %>
               <% end %>
               </td>
-              <td class="order-td"><%= order.name %></td>
+              <td class="order-td"><%= order.name %>様</td>
 
 
-              <td class="order-td">
-                <%= order.order_details.count %>
+              <td class="order-td"><%= order.order_details.pluck(:amount).sum %>
+                <!--%= order.order_details.count % -->
                 <!--% order.order_details.each do |order_detail| %>
                     % order_detail.amount %>% end %-->
               </td></td>
