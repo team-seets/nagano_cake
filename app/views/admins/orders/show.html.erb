@@ -8,14 +8,14 @@
 		        <div class="col-md-8"><%= @order.name %></div>
 
 		        <div class="col-md-4">配送先</div>
-		        <div class="col-md-8"><%= @order.postal_code %><%= @order.adress %><br><%= @order.name %></div>
+		        <div class="col-md-8"><%= @order.postal_code %><%= @order.address %><br><%= @order.name %></div>
 
 		        <div class="col-md-4">支払い方法</div>
 		        <div class="col-md-8"><%= @order.payment_methods %></div>
 
 						<%= form_for(@order, url: admins_order_path, method: :patch) do |f| %>
 		        <div class="col-md-4">注文ステータス</div>
-		        <div class="col-md-8"><%= f.select :status, Order.order_statuses.keys, class: "status" %><%= f.submit '更新' ,class: "btn btn-primary" %></div>
+		        <div class="col-md-8"><%= f.submit '更新' ,class: "btn btn-primary" %></div>
 		        <% end %>
 	        </div>
         </div>
@@ -31,12 +31,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_details.each do |order_detail| %>
+          <% @cart_products.each do |cart_product| %>
             <tr>
-              <td class="order-td"><%= order_detail.product.name %></td>
-              <td class="order-td"><%= order_detail.price %></td>
-              <td class="order-td"><%= order_detail.amount %></td>
-              <td class="order-td"></td>
+              <td class="order-td"><%= cart_product.product.name %></td>
+              <td class="order-td"><%= cart_product.product.price %></td>
+              <td class="order-td"><%= cart_product.quantity %></td>
+              <td class="order-td"><%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %></td>
               <td class="order-td"></td>
             </tr>
           <% end %>

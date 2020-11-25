@@ -1,7 +1,8 @@
 class Admins::ProductsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def top
+    @orders = Order.all
   end
 
   def index

@@ -1,12 +1,14 @@
 class Admins::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @cart_products = CartProduct.all
   end
 
   def index
     @orders = Order.all
     @order = params[:name]
-    @order_details = params[:amount]
+    #@order_details = OrderDetails.all
+    #@order_detail = OrdrDetail.find(params[:id])
   end
 
   def update
