@@ -15,7 +15,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td class="text-left">
-              <%= link_to admins_order_path(order) do %><!-- この記述でリンクできるか？ -->
+              <%= link_to admins_order_path(order) do %>
                 <%= order.created_at %>
               <% end %>
               </td>
