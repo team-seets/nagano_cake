@@ -22,7 +22,11 @@
               <td class="order-td"><%= order.name %></td>
 
 
-              <td class="order-td"><%= order.order_details.count %></td>
+              <td class="order-td">
+                <%= order.order_details.count %>
+                <!--% order.order_details.each do |order_detail| %>
+                    % order_detail.amount %>% end %-->
+              </td></td>
 
               <td class="order-td"><%= order.status %></td>
             </tr>

@@ -8,15 +8,21 @@
 		        <div class="col-md-8"><%= @order.name %></div>
 
 		        <div class="col-md-4">配送先</div>
-		        <div class="col-md-8"><%= @order.postal_code %><%= @order.address %><br><%= @order.name %></div>
+		        <div class="col-md-8">〒<%= @order.postal_code %><%= @order.address %><br><%= @order.name %></div>
 
 		        <div class="col-md-4">支払い方法</div>
 		        <div class="col-md-8"><%= @order.payment_methods %></div>
 
 						<%= form_for(@order, url: admins_order_path, method: :patch) do |f| %>
 		        <div class="col-md-4">注文ステータス</div>
-		        <div class="col-md-8"><%= f.submit '更新' ,class: "btn btn-primary" %></div>
-		        <% end %>
+              <%= f.select :status, Order.statuses.keys.map{ |k| k } %>
+			            <td>
+			            	<!--%= f.select :making_status, OrderDetail.making_statuses.keys, class: "making_status" %>-->
+			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
+			            </td>
+			       <% end %>
+		        <!--<div class="col-md-8">%= f.submit '更新' ,class: "btn btn-primary" %--></div>
+
 	        </div>
         </div>
         <div class="col-xs-6 col-xs-offset-1">
@@ -31,15 +37,17 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_products.each do |cart_product| %>
-            <tr>
-              <td class="order-td"><%= cart_product.product.name %></td>
-              <td class="order-td"><%= cart_product.product.price %></td>
-              <td class="order-td"><%= cart_product.quantity %></td>
-              <td class="order-td"><%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %></td>
-              <td class="order-td"></td>
-            </tr>
-          <% end %>
+          <!--% @cart_products.each do |cart_product| %>
+           <tr>
+          <td class="order-td">%= cart_product.product.name %></td>
+          <td class="order-td">%= cart_product.product.price %></td>
+          <td class="order-td">%= cart_product.quantity %></td>
+          <td class="order-td">%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %></td>
+          %= form_for(@cart_product, url: admins_order_detail_path, method: :patch) do |f| %><td class="order-td">
+            %= f.select :making_status, OrderDetail.making_status.keys.map{ |k| k } %>
+          </td>% end %-->
+          </tr>
+
         </tbody>
       </table>
     </div>
