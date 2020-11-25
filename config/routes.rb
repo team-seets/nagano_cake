@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
   resources :cart_products, only: [:index,:create,:update,:destroy]
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 84a4eaf881f2fd87ca3b3706670da5e54faacb11
   get 'orders/thanx' => 'orders#thanx', as: 'thanx'
   resources :orders, only: [:new, :create, :index, :show]
 

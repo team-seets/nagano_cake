@@ -20,6 +20,10 @@ class Customer < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84a4eaf881f2fd87ca3b3706670da5e54faacb11
    enum is_deleted: {"有効": false, "退会済み": true}
 
   # def active_for_authentication?
