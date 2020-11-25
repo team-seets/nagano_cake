@@ -4,7 +4,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
@@ -14,25 +14,26 @@ class Customers::OrdersController < ApplicationController
   def complete
     @cart_products = current_customer.cart_products
     @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
-    @order = Order.new
-    @order.payment_methods = params[:order][:payment_methods]
-    if params[:order][:select] == "1"
-      @order.postal_code = current_customer.postal_code
-      @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
-    # elsif 
-    else
-    @order.postal_code = params[:order][:postal_code]
-    @order.address = params[:order][:address]
-    @name = params[:order][:name]
-    end
+    # @order = Order.new
+    # @order.payment_methods = params[:order][:payment_methods]
+    # if params[:order][:select] == "1"
+    #   @order.postal_code = current_customer.postal_code
+    #   @order.address = current_customer.address
+    #   @order.name = current_customer.last_name + current_customer.first_name
+    # # elsif 
+    # else
+    # @order.postal_code = params[:order][:postal_code]
+    # @order.address = params[:order][:address]
+    # @name = params[:order][:name]
+    # end
   end
 
   def thanx
   end
 
   def index
-    @orders = Order.all
+    @cart_products = current_customer.cart_products
+    # @order = Order.find(params[:id])
   end
 
   def show
