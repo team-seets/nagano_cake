@@ -94,3 +94,28 @@
   margin-left: 365px;
   margin-top:231px;
 }
+
+.btn-circle-3d {
+  display: inline-block;
+  text-decoration: none;
+  background: #CCFFFF;
+  color:  #C0C0C0;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #CCFFFF;
+  transition: .4s;
+  margin-left:840px;
+}
+
+.btn-circle-3d:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
