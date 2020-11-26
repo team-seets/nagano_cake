@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
     products_path(current_customer)
   end
 
+  def after_sign_out_path_for(resource)
+    case resource
+    when :customer
+      root_path
+    when :admin
+      new_admin_session_path
+    end
+  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
