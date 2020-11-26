@@ -1,0 +1,22 @@
+<div class="row">
+    <% if @datas.empty? %>
+    <h2>該当する商品はありません</h2>
+  <% end %>
+  <div class="col-xs-9">
+    <h1>
+      <strong>商品一覧</strong> (全<%=  @datas.count %>件)
+    </h1>
+    <table class="table">
+        <thead></thead>
+        <tbody>
+          <% @datas.each do |data| %>
+            <td>
+              <div class="image11"></div><%= attachment_image_tag data, :image, size:'200x170' %></div>
+    		      <div class="name11"></div><%= link_to data.name,product_path(data.id) %></div>
+              <div class="image11">￥<%= data.price %></div>
+            <td>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
