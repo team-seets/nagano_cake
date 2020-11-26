@@ -1,5 +1,5 @@
 class Admins::ProductsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_admin!
 
   def top
     @orders = Order.all
