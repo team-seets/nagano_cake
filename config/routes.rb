@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope module: :customers do
   resources :products, only: [:show,:index]
 
-  resources :orders, only: [:new, :create, :index, :show, :thanks, :complete]
+ 
   resources :cart_products, only: [:index,:create,:update,:destroy]
 
   get 'orders/thanx' => 'orders#thanx', as: 'thanx'
