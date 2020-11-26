@@ -1,12 +1,11 @@
 class Customers::CartProductsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @cart_product = current_customer.cart_products
     if @cart_product.empty?
        @totalprice = 0
     else
-
        @totalprice = @cart_product.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+).to_s(:delimited)
     end
   end
@@ -40,7 +39,7 @@ class Customers::CartProductsController < ApplicationController
     flash[:success] = 'ユーザーを削除しました。'
     redirect_to cart_products_path
   end
-  
+
   private
     def cart_product_params
        params.require(:cart_product).permit(:product_id, :quantity)
