@@ -1,14 +1,14 @@
 class Customers::ProductsController < ApplicationController
   def top
-    @product = Product.all
-     @genres = Genre.all
+    @product = Product.page(params[:page]).reverse_order
+    @genres = Genre.all
   end
 
   def about
   end
 
   def index
-    @product = Product.all
+    @product = Product.page(params[:page]).reverse_order
     @genres = Genre.all
   end
 

@@ -1,6 +1,6 @@
 class Customers::CartProductsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @cart_product = current_customer.cart_products
     if @cart_product.empty?
@@ -39,7 +39,7 @@ class Customers::CartProductsController < ApplicationController
     flash[:success] = 'ユーザーを削除しました。'
     redirect_to cart_products_path
   end
-  
+
   private
     def cart_product_params
        params.require(:cart_product).permit(:product_id, :quantity)

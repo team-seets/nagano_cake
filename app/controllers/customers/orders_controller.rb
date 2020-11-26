@@ -29,7 +29,7 @@ class Customers::OrdersController < ApplicationController
     # end
     @order = Order.new(order_params)
     @order.save
-    
+
     @cart_products.each do |cart_product|
       @order_detail = OrderDetail.new
       @order_detail.amount = cart_product.quantity
@@ -38,9 +38,9 @@ class Customers::OrdersController < ApplicationController
       @order_detail.product_id = cart_product.product.id
       @order_detail.save
     end
-    
+
     redirect_to thanx_path
-    
+
   end
 
 
@@ -51,7 +51,7 @@ class Customers::OrdersController < ApplicationController
     # @postal_code = params[:order][:postal_code]
     # @address = params[:order][:address]
     # @name = params[:order][:name]
-    
+
     @cart_products = current_customer.cart_products
     @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
     @order = current_customer.orders.new(order_params)
