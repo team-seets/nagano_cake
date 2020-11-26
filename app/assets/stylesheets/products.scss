@@ -1,3 +1,12 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-visual {
+  width: 800px; /* 横幅いっぱい */
+  height: 450px; /* 高さ300px */
+  background-image: url(christmas.jpg);}
+.message {
+  width: 40%; /* 横幅40% */
+  height: 300px; /* 親の高さに揃える */
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */}

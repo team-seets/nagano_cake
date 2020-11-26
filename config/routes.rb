@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   delete 'cart_products' => 'cart_products#destroy_all', as: 'destroy_all'
 
-  get 'product/about' => 'customers/products#about', as: 'about'
+  get 'product/about' => 'products#about', as: 'about'
   resources :products, only: [:show,:index], module: 'customers'
  # resources :orders, only: [:new, :create, :index, :show]
 
