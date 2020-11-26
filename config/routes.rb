@@ -30,7 +30,8 @@ Rails.application.routes.draw do
 
   get 'searches' => 'search#search', as: 'search'
 
-
+  get 'searches/products' => 'search#products', as: 'products_search'
+  
   resources :customers do
     collection do
     get :quit
