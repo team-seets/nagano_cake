@@ -6,6 +6,7 @@ class Customers::CartProductsController < ApplicationController
     if @cart_product.empty?
        @totalprice = 0
     else
+
        @totalprice = @cart_product.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+).to_s(:delimited)
     end
   end

@@ -5,6 +5,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
+    byebug
     @cart_products = current_customer.cart_products
     # @cart_products = current_customer.cart_products
     # @totalprice = @cart_products.map{|cart_product|cart_product.product.price * cart_product.quantity}.inject(:+)
