@@ -30,6 +30,16 @@
 </table>
   </div>
   
+  <% if @cart_product.errors.any? %>
+		<div id="error_explanation">
+			<h3><%= @cart_product.errors.count %>error prohibited this obj from being saved:</h3>
+			<ul>
+				<% @cart_product.errors.full_messages.each do |message| %>
+				  <li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
   <%= form_with model:@cart_product, url:cart_products_path,  method: :post, local:true do |f| %>
       <br><br><br><br><br>
       <div class="col-xs-3">
