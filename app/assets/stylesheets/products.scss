@@ -17,7 +17,26 @@
   width: 45%; /* 横幅40% */
   height: 300px; /* 親の高さに揃える */
   text-align: center; /* 文字を中央揃えにする */
-  padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */}
+  padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
+
+}
+.area {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  padding: 5% 0;
+}
+
 #container{
   height: 500px;
+}
+
+.parallax-bg {
+
+  height: 500px;
+  background-image: url("background2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
