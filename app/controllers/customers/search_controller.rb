@@ -2,34 +2,34 @@ class Customers::SearchController < ApplicationController
   before_action :authenticate_customer!
 
 	def search
-		@products = Product.all
 		@word = params[:search_word]
 		method = params[:search_method]
-		model = params[:search_model]
-		@product = Product.search(method,@word)
-		if model == 'Product'
-	    @products = Product.search(method,@word)
-	  end
-	  pp @products
+		# model = params[:search_model]
+		@products = Product.search(method,@word)
+		# if model == 'Product'
+	 #   @products = Product.search(method,@word)
+	 # else
+	 #   @products = Product.all
+	 # end
 	end
-	
+
   def products
-    @value = params["search"]["value"]        
-    @how = params["search"]["how"]            
-    @datas = search_for(@how, @value).page(params[:page]).reverse_order 
+    @value = params["search"]["value"]
+    @how = params["search"]["how"]
+    @datas = search_for(@how, @value).page(params[:page]).reverse_order
     @genres = Genre.all
-    @genre = Genre.find(@value)
+    @genre = Genre.find_by(name: @value)
   end
 
   private
 
   def match(value)
-   
+
     Product.where(name: value).or(Product.where(genre_id: value))
   end
 
-  def forward(value)                              
-    Product.where("name LIKE ?", "#{value}%")        
+  def forward(value)
+    Product.where("name LIKE ?", "#{value}%")
   end
 
   def backward(value)
@@ -42,8 +42,8 @@ class Customers::SearchController < ApplicationController
 
 
   def search_for(how, value)
-    case how                     
-    when 'match'                 
+    case how
+    when 'match'
       match(value)
     when 'forward'
       forward(value)
