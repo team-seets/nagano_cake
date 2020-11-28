@@ -20,7 +20,7 @@
       </div>
       <div class="price1">  
         税込価格（税抜価格）
-        <%= @product.price %> 円
+        <%= (@product.price * (1.08)).floor.to_s(:delimited) %> (<%= @product.price %>) 円
       </div>
       <div class="status1">
         販売ステータス
