@@ -17,12 +17,10 @@
 		        <div class="col-md-4">注文ステータス</div>
               <%= f.select :status, Order.statuses.keys.map{ |k| k } %>
 			            <td>
-			            	<!--%= f.select :making_status, OrderDetail.making_statuses.keys, class: "making_status" %>-->
 			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
 			            </td>
 			       <% end %>
-		        <!--<div class="col-md-8">%= f.submit '更新' ,class: "btn btn-primary" %--></div>
-
+		        </div>
 	        </div>
         </div>
         <div class="col-xs-6 col-xs-offset-1">
@@ -38,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-            <% @order_detail.each do |order_detail| %>
+            <% @order_details.each do |order_detail| %>
             <tr>
               <td class="text-left">
                 <%= order_detail.product.name %>
