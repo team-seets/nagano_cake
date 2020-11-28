@@ -30,16 +30,7 @@
 </table>
   </div>
   
-  <% if @cart_product.errors.any? %>
-		<div id="error_explanation">
-			<h3><%= @cart_product.errors.count %>error prohibited this obj from being saved:</h3>
-			<ul>
-				<% @cart_product.errors.full_messages.each do |message| %>
-				  <li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+ 
   <%= form_with model:@cart_product, url:cart_products_path,  method: :post, local:true do |f| %>
       <br><br><br><br><br>
       <div class="col-xs-3">
@@ -51,12 +42,19 @@
       <%= @product.introduction %>
       <br>
       <br>
-      <h2>￥<%= @product.price %></h2><h4>（税抜）</h4>
-      <br>
-      <br>
+      <h2>￥<%= @product.price %></h2><h4>（税込）</h4>
       <%= f.hidden_field :product_id, :value => @product.id %>
-      <%= f.number_field :quantity %>
-      <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+      <% if @cart_product.errors.any? %>
+    		<div id="error_explanation">
+    			<h3><%= @cart_product.errors.count %>error prohibited this obj from being saved:</h3>
+    			<ul>
+    				<% @cart_product.errors.full_messages.each do |message| %>
+    				  <li><%= message %></li>
+    				<% end %>
+    			</ul>
+    		</div>
+	    <% end %>
+      <%= f.number_field :quantity %> <%= f.submit "カートに入れる", class:"btn btn-primary" %>
       </div>
   <% end %>
   

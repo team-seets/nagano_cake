@@ -16,7 +16,9 @@ class Customers::SearchController < ApplicationController
   def products
     @value = params["search"]["value"]        
     @how = params["search"]["how"]            
-    @datas = search_for(@how, @value).page(params[:page]).reverse_order         
+    @datas = search_for(@how, @value).page(params[:page]).reverse_order 
+    @genres = Genre.all
+    @genre = Genre.find(@value)
   end
 
   private
