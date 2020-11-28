@@ -8,7 +8,13 @@ class Customers::ProductsController < ApplicationController
   end
 
   def index
-    @product = Product.page(params[:page]).reverse_order
+    if params[:genre_id]
+       @product = Product.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order
+       @genre_name = Genre.find(params[:genre_id]).name
+    else
+       @product = Product.page(params[:page]).reverse_order
+       @genre_name = "商品"
+    end
     @genres = Genre.all
   end
 

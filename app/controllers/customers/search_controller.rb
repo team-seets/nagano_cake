@@ -18,7 +18,10 @@ class Customers::SearchController < ApplicationController
     @how = params["search"]["how"]
     @datas = search_for(@how, @value).page(params[:page]).reverse_order
     @genres = Genre.all
+
+
     @genre = Genre.find_by(name: @value)
+
   end
 
   private
