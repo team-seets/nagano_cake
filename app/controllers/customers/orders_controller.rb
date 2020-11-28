@@ -6,10 +6,19 @@ class Customers::OrdersController < ApplicationController
 
   def create
     @cart_products = current_customer.cart_products
-   
+
     @order = Order.new(order_params)
+    if params[:addresses] == "new_address"
+      @address = Address.new
+      @address.postal_code = @order.postal_code
+      @address.address     = @order.address
+      @address.name        = @order.name
+      @address.customer_id = current_customer.id
+      @address.save
+    end
+
     if @order.save
-    
+
     @cart_products.each do |cart_product|
       @order_detail = OrderDetail.new
       @order_detail.amount = cart_product.quantity
@@ -43,6 +52,10 @@ class Customers::OrdersController < ApplicationController
       @order.address     = ship.address
       @order.name        = ship.name
     elsif params[:order][:addresses] == "new_address"
+      # @address = Address.new
+      # @adress.postal_code = params[:order][:postal_code]
+      # @adress.address     = params[:order][:address]
+      # @adress.name        = params[:order][:name]
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
@@ -75,5 +88,5 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :payment_methods, :name, :total_payment, :shipping_cost, :status, :customer_id,  :address_id, :addresses )
   end
-  
+
 end

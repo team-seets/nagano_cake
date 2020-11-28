@@ -21,7 +21,7 @@ class Customer < ApplicationRecord
   end
 
 
-   # enum is_deleted: {"有効": false, "退会済み": true}
+    enum is_deleted: {"有効": false, "退会済み": true}
 
 
   def self.search(method,word)
