@@ -4,16 +4,20 @@
         <table class="table">
           <thead>
   					<tr>
+  					  <th></th>
           		<th>name</th>
     					<th>price</th>
   			  	</tr>
+  			  </thead>
+  			  <tbody>
             <% @products.each do |product| %>
-      		    <td>
-      		      <div class="name11"><%= link_to product.name,product_path(product.id) %></div>
-                <div class="image11">¥<%= product.price %></div>
-              </td>
+      		    <tr>
+      		      <th class="image11"><%= attachment_image_tag product, :image, size:'200x170' %></th>
+      		      <th class="name11"><%= link_to product.name,product_path(product.id) %></th>
+                <th class="image11">¥<%= product.price %></th>
+              </tr>
             <% end %>
-          </thead>
+          </tbody>
         </table>
       </div>
     <% end %>

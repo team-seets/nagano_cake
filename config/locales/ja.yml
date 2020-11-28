@@ -2,5 +2,5 @@ ja:
   enums:
     customer:
       is_deleted:
-        true: 有効
-        false: 退会済み
+        true: 退会済み
+        false: 有効
