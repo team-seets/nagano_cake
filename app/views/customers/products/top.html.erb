@@ -11,6 +11,7 @@
       <%= f.text_field 'search[value]', size: "26x4" %><br>
       <span class="search-button col-xs-12 text-right">
         <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+        <% f.hidden_field :str, :value => "str" %>
         <%= f.submit :"検索" %>
       </span>
     <% end %>
@@ -26,7 +27,7 @@
     <% @genres.each do |genre| %>
       <tr>
         <td>
-          <%= link_to genre.name, products_search_path('search[value]': genre.id, 'search[how]': "match") %>
+          <%= link_to genre.name, products_path(genre_id: genre.id) %>
         </td>
       </tr>
     <% end %>
